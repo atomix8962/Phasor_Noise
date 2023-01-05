@@ -5,4 +5,4 @@ mean.py
 '''
 
 def mean(noiseArray:list) -> float:
-    
+    pass
