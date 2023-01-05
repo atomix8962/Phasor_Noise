@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 from matplotlib.widgets import Slider
 import numpy as np
-import generator_phasor_noise_vPy as generator
+import phasor.phasor_numpy as generator
 
 global line
 
@@ -16,7 +16,7 @@ def apply_function(X, Y, bandwidth):
         Z.insert(i, [])
         for j in range(len(Y)):
             vector = X[i][j], Y[i][j]
-            Z[i].insert(j, generator.gaussian(vector, bandwidth))
+            Z[i].insert(j, generator.numpy_gaussian(vector, bandwidth))
     return Z
 
 fig, ax = plt.subplots(subplot_kw=dict(projection="3d"))
