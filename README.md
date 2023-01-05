@@ -13,7 +13,7 @@ rsc/
     |____random_pts.py <Paul B.> #Création des données aléatoires
 analysis/ #Algo d'analyse
     |____histogrm.py <Guillaume>
-    |____medium.py Paul <Paul M.>
+    |____mean.py Paul <Paul M.>
     |____std_gap.py <Paul M.>
     |____PSD.py <Etienne>
     |____perf.py <Paul B.>
