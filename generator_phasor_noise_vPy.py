@@ -1,9 +1,16 @@
 import math
+import numpy
 
 def gaussian(vector:list, bandwidth:float):
     x = vector[0]
     y = vector[1]
     return math.exp(-math.pi*(bandwidth**2)*((x**2)+(y**2)))
+
+"""
+Version Numpy provisoire de la fonction gaussian
+"""
+def numpy_gaussian(vector, bandwidth:float):
+    return numpy.exp(-numpy.pi*(bandwidth**2)*(numpy.linalg.norm(vector)**2))
 
 def intensity(vector:list):
     pass
