@@ -12,6 +12,7 @@ rsc/
     |____impr_img.py <Paul B.> #Affichage des résultats sur mathplotlib
     |____random_pts.py <Paul B.> #Création des données aléatoires
 analysis/ #Algo d'analyse
+    |____image_reader.py <Etienne>
     |____histogrm.py <Guillaume>
     |____mean.py Paul <Paul M.>
     |____std_gap.py <Paul M.>
