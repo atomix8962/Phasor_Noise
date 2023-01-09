@@ -3,6 +3,9 @@ phasor_py.py
 --> Formule de phasor avec python
 '''
 import math
+"""
+    Attention j'ai pas encore test/ Code temporaire.
+"""
 
 def gaussian(vector:list, bandwidth:float):
     x = vector[0]
@@ -10,30 +13,38 @@ def gaussian(vector:list, bandwidth:float):
     return math.exp(-math.pi*(bandwidth**2)*((x**2)+(y**2)))
 
 
-def intensity(vector:list, dx:float, dy:float, ptsArray:list, kernelArray:list, bandwidth:float, f:float):
-    res1 = 0
-    res2 = 0
-    for ker in kernelArray:
-        new_x = vector[0] - ptsArray[ker][1][0]
-        new_y = vector[1] - ptsArray[ker][1][1]
-        res1 = res1 + (gaussian([new_x,new_y], bandwidth)*math.sin(-(new_x*dx+new_y*dy)*f))
-        res2 = res2 + (gaussian([new_x,new_y], bandwidth)*math.cos(-(new_x*dx+new_y*dy)*f))
-    return math.sqrt(res1**2 + res2**2)
+def dot(vector1: list, vector2: list):
+    return vector1[0]*vector2[0]+vector1[1]*vector2[1]
 
-def phase_func(vector:list, dx:float, dy:float, ptsArray:list, kernelArray:list, bandwidth:float, f:float):
-    res1 = 0
-    res2 = 0
-    for ker in kernelArray:
-        new_x = vector[0] - ptsArray[ker][1][0]
-        new_y =vector[1] - ptsArray[ker][1][1]
-        res1 = res1 + (gaussian([new_x,new_y], bandwidth)*math.sin(-(new_x*dx+new_y*dy)*f))
-        res2 = res2 + (gaussian([new_x,new_y], bandwidth)*math.cos(-(new_x*dx+new_y*dy)*f))
-    return math.atan2(res1,res2)
 
-def sine_wave(vector:list, direction_x:int, direction_y:int, frequency:float, phase_f:float):
-    return math.sin((direction_x*vector[0]+ direction_y*vector[1])*frequency + phase_f)
+def vector_subtraction(vector1: list, vector2: list):
+    return [vector1[0]-vector2[0], vector1[1]-vector2[1]]
 
-def phasor_generator(ptsArray:list,dataArray:list, kernelArray:list, size:list, bandwidth:float) -> list:
+
+def polar_coordinates_coefficients(vector: list, u: list, kernel_array: list, bandwidth: float, frequency: int):
+    return [gaussian(vector_subtraction(vector, kernel), bandwidth) * math.sin(-dot(kernel, u) * frequency) for kernel in kernel_array],\
+           [gaussian(vector_subtraction(vector, kernel), bandwidth) * math.cos(-dot(kernel, u) * frequency) for kernel in kernel_array]
+
+
+def intensity(vector: list, u: list, kernel_array: list, bandwidth: float, frequency: float):
+    l1, l2 = polar_coordinates_coefficients(vector, u, kernel_array, bandwidth, frequency)
+    return math.sqrt(sum(l1)**2+sum(l2)**2)
+
+
+def phase_func(vector: list, u: list, kernel_array: list, bandwidth: float, frequency: float):
+    l1, l2 = polar_coordinates_coefficients(vector, u, kernel_array, bandwidth, frequency)
+    return math.atan2(sum(l1), sum(l2))
+
+
+def sine_wave(vector: list, u: list, frequency: float, kernel_array: list, bandwidth: float):
+    return math.sin(frequency*dot(vector, u)+phase_func(vector, u, kernel_array, bandwidth, frequency))
+
+
+def phasor_noise(vector: list, u: list, kernel_array: list, bandwidth: float, frequency: float):
+    return intensity(vector, u, kernel_array, bandwidth, frequency)*sine_wave(vector, u, frequency, kernel_array, bandwidth)
+
+
+def phasor_generator(ptsArray: list, dataArray: list, kernelArray: list, size: list, bandwidth: float) -> list:
     noiseArray = list()
     for x in range(size[0]):
         line = list()
@@ -43,7 +54,7 @@ def phasor_generator(ptsArray:list,dataArray:list, kernelArray:list, size:list, 
 
     for pt in dataArray:
         num = pt[0]
-        direction_x  = pt[1][0]
+        direction_x = pt[1][0]
         direction_y = pt[1][1]
         frequency = pt[2]*2*math.pi
         phase = pt[3]
