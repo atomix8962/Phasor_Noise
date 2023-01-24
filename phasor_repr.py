@@ -4,13 +4,13 @@ from matplotlib import pyplot as plt
 from matplotlib.widgets import Slider
 import numpy as np
 import phasor.phasor_py as generator
+import random
 
 global line
 
-X = np.arange(0, 255, 1)
-Y = np.arange(0, 255, 1)
+X = np.arange(0, 50, 1)
+Y = np.arange(0, 50, 1)
 X, Y = np.meshgrid(X, Y)
-
 
 def apply_function(X, Y, bandwidth):
     Z = []
@@ -18,7 +18,10 @@ def apply_function(X, Y, bandwidth):
         Z.insert(i, [])
         for j in range(len(Y)):
             vector = X[i][j], Y[i][j]
-            Z[i].insert(j, generator.phasor_noise(vector, [0, 1], [[100, 100], [105, 105]], bandwidth, 1000))
+            Z[i].insert(j, generator.phasor_noise(vector, [[[25, 25], [1, 0], 1, 0.1],
+                                                           [[28, 28], [1, 0], 1, 0.1],
+                                                           [[20, 25], [1, 0], 1, 0.1],
+                                                           [[25, 20], [1, 0], 1, 0.1]]))
     return Z
 
 fig, ax = plt.subplots(subplot_kw=dict(projection="3d"))
