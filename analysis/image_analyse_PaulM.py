@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 
-image = Image.open("./data/phasornoise_capture.png").convert('RGBA')
+image = Image.open("./Noise.png").convert('RGBA')
 image_numpy = np.array(image)
 image_numpy_R = image_numpy[:,:,0].astype(np.float64)/255
 image_numpy_R_flattened = image_numpy_R.reshape((-1,))
