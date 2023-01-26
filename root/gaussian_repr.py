@@ -5,10 +5,7 @@ import phasor.phasor_numpy as generator
 
 global line
 
-X = np.arange(-10, 10, 0.1)
-Y = np.arange(-10, 10, 0.1)
-X, Y = np.meshgrid(X, Y)
-
+X, Y = np.meshgrid(np.arange(-10, 10, 0.1), np.arange(-10, 10, 0.1))
 
 def apply_function(X, Y, bandwidth):
     Z = []
@@ -24,7 +21,6 @@ fig.subplots_adjust(bottom=0.25)
 line = ax.plot_surface(X, Y, np.array(apply_function(X, Y, 0)))
 sliderAxes = fig.add_axes([0.25, 0.1, 0.65, 0.03])
 slider = Slider(ax=sliderAxes, label='Bandwidth', valmin=0, valmax=3, valinit=0)
-
 
 def update(val):
     global line
