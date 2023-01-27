@@ -1,7 +1,7 @@
 '''
 --> Formule de phasor avec python
 '''
-import math
+import math, scipy
 """
     Attention j'ai pas encore test/ Code temporaire.
 """
@@ -54,5 +54,5 @@ kernel_array : list of
 [position, direction, frequency, bandwidth]
 """
 def phasor_noise(x: list, kernel_array: list):
-    #return phase_func(x, kernel_array)
+    #return scipy.signal.sawtooth(phase_func(x, kernel_array))
     return sine_wave(x, kernel_array)
