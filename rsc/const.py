@@ -1,7 +1,15 @@
-# PATH
+"""
+Nom :           rsc/const.py
+Decription :    Déclaration des constantes du projet
+Date :          30/01/2023
+Auteur :        Paul BEDROSSIAN
+Statut :        Fonctionne en v1.0 (vérifié & relu)
+"""
+
+# Chemins d'accès
 root = "root/"
 
-# COLORS
+# Couleurs textuelles dans le terminal
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -13,7 +21,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-# TEXT
+# Texte à afficher (pour le menu textuelle)
 head = [
     bcolors.HEADER +
     "--------------------------------",

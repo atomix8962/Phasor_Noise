@@ -1,7 +1,12 @@
-'''
-histogrm.py
---> Réalisation d'un histogramme des valeurs données dans un tableau 
-'''
+"""
+Nom :           analysis/histogrm.py
+Decription :    Script qui réalise un histogramme d'un bruit généré par le générateur de bruit phasor
+Date :          30/01/2023
+Auteur :        Guillaume
+Statut :        En rédaction...
+"""
 
-def histogrm(noiseArray:list) -> None:
-    pass
+# Section des imports
+
+
+# Section de définition des fonctions

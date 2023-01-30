@@ -1,10 +1,12 @@
-'''
-phasor_numpy.py
---> Formule de phasor avec numpy
-'''
-import numpy
+"""
+Nom :           phasor/phasor_numpy.py
+Decription :    Script de calcul en un point du bruit Phasor avec la bibliothèque NUMPY
+Date :          30/01/2023
+Auteur :        Paul B.
+Statut :        En rédaction...
+"""
+
+# Section des imports
 
 
-def numpy_gaussian(vector, bandwidth:float):
-    return numpy.exp(-numpy.pi*(bandwidth**2)*(numpy.linalg.norm(vector)**2))
-
+# Section de définition des fonctions
