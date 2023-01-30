@@ -1,11 +1,7 @@
 '''
 --> Formule de phasor avec python
 '''
-import math, scipy
-"""
-    Attention j'ai pas encore test/ Code temporaire.
-"""
-
+import math
 def gaussian(vector:list, bandwidth:float):
     return math.exp(-math.pi*(bandwidth**2)*dot(vector, vector))
 

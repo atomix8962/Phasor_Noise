@@ -2,7 +2,7 @@ import numpy as np
 import os, math
 import random as rd
 from rsc.const import *
-import phasor.phasor_py as generator
+import phasor.phasor_jax as generator
 from matplotlib import pyplot as plt
 from alive_progress import alive_bar
         

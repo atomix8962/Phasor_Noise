@@ -1,5 +1,5 @@
 import numpy as np
 
 
-def gaussian(entry:list,bandwidth=255:int) -> tuple(list,list):
+def gaussian(entry:list,bandwidth:int=255) -> tuple:
     return np.histogram(entry,bins=bandwidth/100) 

@@ -6,11 +6,11 @@ Max size of img : 256x256 px
 main.py #Gestion global du générateur
 phasor/
     |____phasor_py <Alexis>
-    |____phasor_numpy <Alexis>
+    |____phasor_numpy <Paul>
     |____phasor_jax <Alexis>
 rsc/
     |____impr_img.py <Paul B.> #Affichage des résultats sur mathplotlib
-    |____random_pts.py <Paul B.> #Création des données aléatoires
+root/#Nos scripts
 analysis/ #Algo d'analyse
     |____image_reader.py <Etienne>
     |____histogrm.py <Guillaume>
