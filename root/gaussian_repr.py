@@ -16,8 +16,8 @@ from matplotlib import pyplot as plt
 from matplotlib.widgets import Slider
 # Numpy sert à simplifier les calculs matricielles (utilisé ici pour allèger l'écriture ) 
 import numpy as np
-# Phasor.phasor_py permet de calculer le bruit phasor avec python
-import phasor.phasor_py as generator
+# Phasor.phasor_gen permet de calculer le bruit phasor en un seul point 
+import phasor.phasor_gen as generator
 #Alive_progress permet d'afficher une barre de chargement durant les calculs et permet d'estimer le temps restants de calculs
 from alive_progress import alive_bar
 

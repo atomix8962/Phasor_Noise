@@ -76,5 +76,5 @@ def menu() -> None:
     print()
 
 # Section du script
-
-menu() # On démarre le menu du projet
+if __name__== "__main__":
+    menu() # On démarre le menu du projet
